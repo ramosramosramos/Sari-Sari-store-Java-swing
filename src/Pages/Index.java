@@ -11,8 +11,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import net.proteanit.sql.DbUtils;
-import sun.swing.table.DefaultTableCellHeaderRenderer;
+
+
+
 
 public final class Index extends javax.swing.JFrame {
     
@@ -485,7 +488,7 @@ public final class Index extends javax.swing.JFrame {
     public void getItems() {
         try (PreparedStatement pst = conn.prepareStatement("Select id as 'ID',name as 'Name',price as 'Total price',tax as 'Total tax' from items")) {
             ResultSet rs = pst.executeQuery();
-            table.getTableHeader().setDefaultRenderer(new DefaultTableCellHeaderRenderer() {
+            table.getTableHeader().setDefaultRenderer(new DefaultTableCellRenderer(){
                 
                 @Override
                 public Component getTableCellRendererComponent(JTable jtable, Object o, boolean bln, boolean bln1, int i, int i1) {
